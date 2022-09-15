@@ -1,0 +1,12 @@
+.app .app-header {
+    text-align: left;
+    margin-left: 5%;
+}
+
+.app .app-header a {
+    margin: 5px;
+    padding: 5px;
+    background-color: #D2D5DA;
+    color: #4D5562;
+    border-radius: 5px;
+}

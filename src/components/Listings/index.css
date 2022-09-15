@@ -1,0 +1,30 @@
+.app-listings {
+    padding: 20px;
+}
+
+.app-listings .app-listings-search {
+    width: 100%;
+    height: 100px;
+    border: 3px solid #D2D5DA;
+    border-radius: 15px;
+    padding: 0 1.5em 0 1.5em;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.app-listings .item {
+    margin: 40px 0 40px 0;
+}
+
+.app-listings .item .item-name {
+   margin-left: 1.2em; 
+   color: #4D5562;
+}
+
+.app-listings .item .item-img img {
+    border-radius: 10px;
+}
+
+.app-listings .no-results {
+    text-align: center;
+}

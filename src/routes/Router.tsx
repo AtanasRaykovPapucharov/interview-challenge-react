@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { routes } from "./routes";
 
 const Router = (): JSX.Element => (
-  <main className="main-content">
+  <main className="app-router">
     <Routes>
       <Route path="/" element={ <Navigate to="/home" /> }/>
 

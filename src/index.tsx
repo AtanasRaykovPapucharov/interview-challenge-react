@@ -16,6 +16,8 @@ import { createRoot } from "react-dom/client";
 
 import Loading from "./components/Loading";
 
+import "./index.css";
+
 const root: HTMLElement | null = document.getElementById("root");
 const appWidth: number = root !== null ? root.offsetWidth : 0;
 

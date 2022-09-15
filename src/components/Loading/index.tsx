@@ -9,7 +9,7 @@
 
 import React, { ReactElement } from "react";
 import LOADING from "./assets/wheels.gif";
-import { StyleLoading } from "./styles";
+import { StyleLoading } from "./style";
 
 const Loading = (containerWidth: number): ReactElement => {
   return <img src={LOADING} alt="loading..." style={StyleLoading(containerWidth)}/>

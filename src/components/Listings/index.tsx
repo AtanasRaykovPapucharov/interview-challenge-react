@@ -9,6 +9,8 @@ import { getData } from "../../services/requester";
 import { randomStringGenerator } from "../../services/random"
 import { DataItemType, IncludedItemType, ItemType, ResponseType } from "./types";
 
+import "./index.css";
+
 const uniqueId = randomStringGenerator(24); // random string with length 24 symbols
 
 const getUrl = (filter: string): string => {
@@ -70,7 +72,7 @@ function Listings(): ReactElement {
       {
         items.length > 0 ?
         items.map((item: ItemType) => {
-          return <article key={item.uniqueKey} className="item container-resp-col">
+          return <article key={item.uniqueKey} className="item flex-container">
             <aside className="item-img flex-item-1">
               <img src={item.imgUrl} alt="RV image" width="250px" height="150px" />
             </aside>
