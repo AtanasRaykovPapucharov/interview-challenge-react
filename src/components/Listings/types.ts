@@ -1,7 +1,7 @@
 export type ResponseType = { 
     data: [], 
     included: [] 
-}
+};
 
 export type DataItemType = { 
     attributes: { name: string },
@@ -12,17 +12,17 @@ export type DataItemType = {
             }
         }
     }
-}
+};
   
 export type IncludedItemType = { 
     id: string, 
     attributes: { 
         url: string 
     } 
-}
+};
   
 export type ItemType = {
     uniqueKey: string,
     name: string,
     imgUrl: string
-}
+};

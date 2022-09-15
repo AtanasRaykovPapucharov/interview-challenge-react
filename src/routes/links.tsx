@@ -8,7 +8,7 @@ export const links: LinkType[] = [
     },
     {
         id: "extension-link-unique-key",
-        name: "App Extension",
-        path: "/extension"
+        name: "JustRoute",
+        path: "/route"
     }
 ];

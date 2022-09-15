@@ -7,10 +7,10 @@
  */
 export function* randomIntGenerator(min: number, max: number): Generator<number> {
     min = Math.ceil(min);
-    max = Math.floor(max);
+    max = Math.ceil(max);
 
     while(true) {
-        yield Math.floor(Math.random() * (max - min + 1)) + min;
+        yield Math.ceil(Math.random() * (max - min + 1)) + min;
     }
 }
 
@@ -37,7 +37,7 @@ export function randomString(length: number): string {
     let randomNumber: number = 0;
 
     for (let i = 0; i < length; i++) {
-        randomNumber = Math.floor(Math.random() * CHARS.length);
+        randomNumber = Math.ceil(Math.random() * CHARS.length);
         id += CHARS[randomNumber];
     }
 

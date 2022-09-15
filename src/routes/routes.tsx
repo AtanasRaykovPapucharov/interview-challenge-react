@@ -12,8 +12,8 @@ export const routes: RouteType[] = [
     },
     {
         id: "extension-unique-key",
-        name: "App Extension",
-        path: "/extension",
-        view: () => <div>extension</div>
+        name: "route",
+        path: "/route",
+        view: () => <p>Just Route</p>
     }
 ];

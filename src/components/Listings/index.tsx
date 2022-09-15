@@ -6,7 +6,7 @@
 import React, { ReactElement, useState, useEffect } from "react";
 import { getData } from "../../services/requester";
 
-import { randomStringGenerator } from "../../services/random"
+import { randomStringGenerator } from "../../services/random";
 import { DataItemType, IncludedItemType, ItemType, ResponseType } from "./types";
 
 import "./index.css";
@@ -51,7 +51,7 @@ function Listings(): ReactElement {
     const url = getUrl(filter);
     getData(url)
       .then((response: ResponseType) => {
-        console.log(response);
+        // console.log(response);
         setItems(listingItems(response));
       })
       .catch((error) => {
