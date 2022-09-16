@@ -19,11 +19,14 @@ import Loading from "./components/Loading";
 import "./index.css";
 
 const root: HTMLElement | null = document.getElementById("root");
-const appWidth: number = root !== null ? root.offsetWidth : 0;
 
 const App: LazyExoticComponent<(props: {}) => JSX.Element> = lazy(() => import("./App"));
-const LazyApp: ReactNode = (() => <Suspense fallback={Loading(appWidth)}><StrictMode><App /></StrictMode></Suspense>)();
+const LazyApp: ReactNode = (() => <Suspense fallback={Loading()}>
+  <StrictMode>
+    <App />
+  </StrictMode>
+</Suspense>)();
 
-root !== null ? 
+root ? 
   createRoot(root).render(LazyApp) : 
   console.log("HTML element with id 'root' is missing");

@@ -2,6 +2,9 @@ import React from "react";
 
 import { RouteType } from "./type";
 import Listings from "../components/Listings";
+import MapSearch from "../components/MapSearch";
+
+// const url = "https://api.github.com/repos/tannerlinsley/react-query";
 
 export const routes: RouteType[] = [
     {
@@ -11,9 +14,9 @@ export const routes: RouteType[] = [
         view: () => <Listings />
     },
     {
-        id: "extension-unique-key",
-        name: "route",
-        path: "/route",
-        view: () => <p>Just Route</p>
+        id: "map-extension-unique-key",
+        name: "MapSearch",
+        path: "/map",
+        view: () => <MapSearch />
     }
 ];

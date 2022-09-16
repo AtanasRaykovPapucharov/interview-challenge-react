@@ -11,10 +11,7 @@ const reducer = (state = INITIAL_STATE, action: { type: ActionType, payload: any
 
   switch (action.type) {
     case ActionType.SET_FILTER:
-      newState.filter = action.payload
-      return newState;
-    case ActionType.SET_LOG:
-      newState.log = { ...action.payload };
+      if(typeof(action.payload) === "string") newState.filter = action.payload;
       return newState;
 
     default: return state;

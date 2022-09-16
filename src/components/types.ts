@@ -3,8 +3,10 @@ export type ResponseType = {
     included: [] 
 };
 
-export type DataItemType = { 
-    attributes: { name: string },
+export type ListingsDataType = { 
+    attributes: { 
+        name: string 
+    },
     relationships: { 
         primary_image: {
             data: { 
@@ -12,6 +14,14 @@ export type DataItemType = {
             }
         }
     }
+};
+
+export type MapDataType = ListingsDataType & { 
+    attributes: { 
+        location: { 
+            state: string 
+        } 
+    },
 };
   
 export type IncludedItemType = { 
@@ -26,3 +36,9 @@ export type ItemType = {
     name: string,
     imgUrl: string
 };
+
+export type MapStateType = {
+    id: string,
+    name: string,
+    d?: string
+}

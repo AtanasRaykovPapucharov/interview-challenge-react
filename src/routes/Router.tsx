@@ -8,7 +8,7 @@ const Router = (): JSX.Element => (
     <Routes>
       <Route path="/" element={ <Navigate to="/home" /> }/>
 
-      { routes.map(obj => <Route key={ obj.id } path={ `/${obj.path}` } element={ obj.view() } />) }
+      { routes.map(obj => <Route key={ obj.id } path={ obj.path } element={ obj.view() } />) }
 
       <Route path="/*" element={ <Navigate to="/home" /> }/>
     </Routes>

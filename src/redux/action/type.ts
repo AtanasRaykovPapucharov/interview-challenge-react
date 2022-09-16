@@ -4,6 +4,5 @@
  */
 
 export enum ActionType { 
-    SET_FILTER,
-    SET_LOG
+    SET_FILTER
 }

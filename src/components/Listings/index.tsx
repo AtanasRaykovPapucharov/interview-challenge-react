@@ -4,23 +4,25 @@
  */
 
 import React, { ReactElement, useState, useEffect } from "react";
-import { getData } from "../../services/requester";
 
+import { URL } from "../../constants";
+import { getData } from "../../services/requester";
 import { randomStringGenerator } from "../../services/random";
-import { DataItemType, IncludedItemType, ItemType, ResponseType } from "./types";
+import { ListingsDataType, IncludedItemType, ItemType, ResponseType } from "../types";
 
 import "./index.css";
+import ItemsMapper from "../ItemsMapper";
 
 const uniqueId = randomStringGenerator(24); // random string with length 24 symbols
 
 const getUrl = (filter: string): string => {
-  return `https://search.outdoorsy.com/rentals?filter[keywords]=${filter}`;
+  return `${URL}?filter[keywords]=${filter}`;
 };
 
-const listingItems = (resp: ResponseType): ItemType[] => {
+export const listingItems = (resp: ResponseType): ItemType[] => {
   const listItems: ItemType[] = [];
 
-  resp.data.forEach((dataItem:  DataItemType) => {
+  resp.data.forEach((dataItem:  ListingsDataType) => {
     let imgId: string;
     let imgUrl: string = "";
 
@@ -49,6 +51,7 @@ function Listings(): ReactElement {
 
   useEffect(() => {
     const url = getUrl(filter);
+
     getData(url)
       .then((response: ResponseType) => {
         // console.log(response);
@@ -61,7 +64,6 @@ function Listings(): ReactElement {
 
   function onChangeHandler(e: any) {
     const userSearch = e.target.value;
-
     setFilter(userSearch);
   }
   
@@ -69,18 +71,7 @@ function Listings(): ReactElement {
     <main className="app-listings">
       <input className="app-listings-search" type="text" name="search" onChange={onChangeHandler}/>
       <br />
-      {
-        items.length > 0 ?
-        items.map((item: ItemType) => {
-          return <article key={item.uniqueKey} className="item flex-container">
-            <aside className="item-img flex-item-1">
-              <img src={item.imgUrl} alt="RV image" width="250px" height="150px" />
-            </aside>
-            <h2 className="item-name flex-item-3">{item.name}</h2>
-          </article>
-        }) :
-        <h2 className="no-results">no results</h2>
-      }
+      { ItemsMapper(items) }
     </main>
   )
 }

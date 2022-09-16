@@ -12,7 +12,7 @@ export const getData = async (url: string): Promise<object> => {
     const { data, status } = await axios.get(
       url, {
         headers: {
-          Accept: "application/json"
+          Accept: "application/json",
         }
       }
     );
