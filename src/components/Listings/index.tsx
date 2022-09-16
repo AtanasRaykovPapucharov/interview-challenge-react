@@ -10,8 +10,9 @@ import { getData } from "../../services/requester";
 import { randomStringGenerator } from "../../services/random";
 import { ListingsDataType, IncludedItemType, ItemType, ResponseType } from "../types";
 
-import "./index.css";
 import ItemsMapper from "../ItemsMapper";
+
+import "./index.css";
 
 const uniqueId = randomStringGenerator(24); // random string with length 24 symbols
 
