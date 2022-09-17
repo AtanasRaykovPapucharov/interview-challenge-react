@@ -8,4 +8,6 @@ A single-page app that provides the ability to search Outdoorsy listings from a 
 
 #### To start the app: **npm start**
 
+#### To run the tests: **npm test**
+
 #### To build the app: **npm run build**

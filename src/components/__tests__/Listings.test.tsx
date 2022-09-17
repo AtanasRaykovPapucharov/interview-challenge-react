@@ -3,8 +3,8 @@
  */
 
 import React from "react";
-import { createRoot } from "react-dom/client";
-import * as ReactDOM from "react-dom";
+import { render, fireEvent, screen, cleanup } from "@testing-library/react";
+
 import Listings from "../Listings";
 
 describe("Listings component tests", () => {
@@ -13,20 +13,20 @@ describe("Listings component tests", () => {
     beforeEach(() => {
         container = window.document.createElement("div");
         window.document.body.appendChild(container);
-        // createRoot(container).render(<Listings />)
-        ReactDOM.render(<Listings />, container);
+        render(<Listings />, { container });
     });
 
     afterEach(() => {
         window.document.body.removeChild(container);
-        container.remove();
+        cleanup();
     });
-    describe("initial document renders correctly", () => {
-        it("inputs length must be 1", () => {
+
+    describe("the document renders correctly", () => {
+        it("inputs list length should be 1", () => {
             const inputs = window.document.querySelectorAll("input");
             expect(inputs).toHaveLength(1);
         });
-        it("input name must be 'search'", () => {
+        it("the input name should be 'search'", () => {
             const inputs = window.document.querySelectorAll("input");
             expect(inputs[0].name).toBe("search");
         });

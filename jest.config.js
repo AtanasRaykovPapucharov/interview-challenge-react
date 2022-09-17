@@ -21,12 +21,6 @@ module.exports = {
     // Matches parent folder `__tests__` and filename
     // should contain `test` or `spec`.
     testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-    globals: {
-      'ts-jest': {
-        tsConfig: 'tsconfig.json',
-        diagnostics: false,
-      },
-    },
     testEnvironment: 'node',
     preset: 'ts-jest',
   

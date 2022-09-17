@@ -16,7 +16,7 @@ export const getData = async (url: string): Promise<object> => {
         }
       }
     );
-    console.log("response status : ", status);
+    // console.log("response status : ", status);
     return data;
   } 
   catch (error) {
