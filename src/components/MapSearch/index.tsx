@@ -1,24 +1,24 @@
 /**
- * MapSearch
+ * MapSearch Component
+ * 
+ * @param getData requester
  * 
  * @returns React Element MapSeach
  * 
  */
 import React, { useEffect, useState } from "react";
 
-import { getData } from "../../services/requester";
 import { MapDataType, IncludedItemType, ItemType, ResponseType, MapStateType } from "../types";
 import usa from "./usa-states.json";
 import { MapColor, URL } from "../../constants";
 import { randomStringGenerator } from "../../services/random";
 import ItemsMapper from "../ItemsMapper";
-import { listingItems } from "../Listings";
 
 import "./index.css";
 
 const uniqueId = randomStringGenerator(24); // random string with length 24 symbols
  
-const MapSearch = () => {
+const MapSearch = ({ getData }: any) => {
   const [state, setState] = useState({ id: "NY", name: "New York" })
   const [items, setItems] = useState([] as ItemType[]);
 
@@ -55,7 +55,7 @@ const MapSearch = () => {
       .then((response: ResponseType) => {
         setItems(listingMapItems(response));
       })
-      .catch((error) => {
+      .catch((error: string) => {
         console.log(error);
       });
   }, [state]);
@@ -65,8 +65,7 @@ const MapSearch = () => {
       const name = e.target.getAttribute("name");
 
       setState({ id, name });
-
-      console.log(state.id + " " + state.name)
+      // console.log(state.id + " " + state.name)
   }
 
   function onMouseEnterHandler(e: any) {
@@ -96,10 +95,11 @@ const MapSearch = () => {
                   id={ s.id } 
                   name={ s.name } 
                   d={ s.d } 
+                  fill={ `US-${state.id}` !== s.id ? MapColor.PURPLE : MapColor.RED }
+                  
                   onClick={ onClickHandler } 
                   onMouseEnter={ onMouseEnterHandler } 
                   onMouseLeave={ onMouseLeaveHandler } 
-                  fill={ `US-${state.id}` !== s.id ? MapColor.PURPLE : MapColor.RED }
               >
                   <title>{s.name}</title>
               </path>

@@ -2,50 +2,68 @@
  * @jest-environment jsdom
  */
 
-import React from "react";
-import { render, fireEvent, screen, cleanup } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 
 import ItemsMapper from "../ItemsMapper";
 import { ItemType } from "../types";
 
-const emptyInputMock: ItemType[] = [];
 const inputMock: ItemType[] = [
     {
         uniqueKey: "1",
-        name: "",
+        name: "Gosho",
         imgUrl: ""
     },
     {
         uniqueKey: "2",
-        name: "",
+        name: "Pesho",
         imgUrl: ""
     },
     {
         uniqueKey: "3",
-        name: "",
+        name: "Misho",
         imgUrl: ""
     }
 ];
 
-describe("ItemsMapper component tests", () => {
-    let container: HTMLDivElement;
-
+describe("Tests ItemsMapper component renders correctly", () => {
     beforeEach(() => {
-        container = window.document.createElement("div");
-        window.document.body.appendChild(container);
-        render(ItemsMapper(inputMock), { container });
+        render(ItemsMapper(inputMock));
     });
 
     afterEach(() => {
-        window.document.body.removeChild(container);
         cleanup();
     });
 
-    describe("the document renders correctly", () => {
-        it("articles list length should be 3", () => {
-            const articles = window.document.querySelectorAll("article");
+    describe("articles list", () => {
+        it("has expected length", () => {
+            const articles = document.querySelectorAll("article");
             const expectedLength = inputMock.length;
+
             expect(articles).toHaveLength(expectedLength);
+        });
+    });
+
+    describe("h2 list", () => {
+        it("has expected length", () => {
+            const h2List = document.querySelectorAll("h2");
+            const expectedLength = inputMock.length;
+
+            expect(h2List).toHaveLength(expectedLength);
+        });
+
+        it("has expected innerHTML", () => {
+            const h2List = document.querySelectorAll("h2");
+            
+            const resultA = h2List[0].innerHTML;
+            const expectedA = "Gosho";
+            const resultB = h2List[1].innerHTML;
+            const expectedB = "Pesho";
+            const resultC = h2List[2].innerHTML;
+            const expectedC = "Misho";
+          
+            expect(resultA).toEqual(expectedA);
+            expect(resultB).toEqual(expectedB);
+            expect(resultC).toEqual(expectedC);
         });
     });
 });

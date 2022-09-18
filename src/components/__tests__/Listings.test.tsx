@@ -3,32 +3,53 @@
  */
 
 import React from "react";
-import { render, fireEvent, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 
 import Listings from "../Listings";
 
-describe("Listings component tests", () => {
-    let container: HTMLDivElement;
+const getDataMock = async (url: string): Promise<object> => {
+    return await { data: [] }
+};
 
+describe("Tests Listings component renders correctly", () => {
     beforeEach(() => {
-        container = window.document.createElement("div");
-        window.document.body.appendChild(container);
-        render(<Listings />, { container });
+        render(<Listings getData={ getDataMock } />);
     });
 
     afterEach(() => {
-        window.document.body.removeChild(container);
         cleanup();
     });
 
-    describe("the document renders correctly", () => {
-        it("inputs list length should be 1", () => {
-            const inputs = window.document.querySelectorAll("input");
-            expect(inputs).toHaveLength(1);
+    describe("the inputs list", () => {
+        it("has expected length", () => {
+            const inputs = document.querySelectorAll("input");
+            const expected = 1;
+
+            expect(inputs).toHaveLength(expected);
         });
-        it("the input name should be 'search'", () => {
-            const inputs = window.document.querySelectorAll("input");
-            expect(inputs[0].name).toBe("search");
+    });
+
+    describe("the input name", () => {
+        it("should be expected", () => {
+            const inputs = document.querySelectorAll("input");
+            const expected = "search";
+
+            expect(inputs[0].name).toBe(expected);
+        });
+    });
+
+    describe("the text on the screen", () => {
+        it("has expected type", () => {
+            const textElement = screen.getByText("no results");
+            
+            expect(textElement).toBeInstanceOf(HTMLHeadingElement);
+        });
+
+        it("has expected className", () => {
+            const textElement = screen.getByText("no results");
+            const expected = "no-results";
+            
+            expect(textElement).toHaveClass(expected);
         });
     });
 });

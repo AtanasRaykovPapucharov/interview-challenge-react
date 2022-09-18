@@ -1,12 +1,15 @@
 /**
- * App Body Component
+ * Listings Component
+ * 
+ * @param getData requester
+ * 
+ * @returns React Element Listings
  * 
  */
 
 import React, { ReactElement, useState, useEffect } from "react";
 
 import { URL } from "../../constants";
-import { getData } from "../../services/requester";
 import { randomStringGenerator } from "../../services/random";
 import { ListingsDataType, IncludedItemType, ItemType, ResponseType } from "../types";
 
@@ -46,7 +49,7 @@ export const listingItems = (resp: ResponseType): ItemType[] => {
   return listItems;
 }
 
-function Listings(): ReactElement {
+function Listings({ getData }: any): ReactElement {
   const [filter, setFilter] = useState("trailer")
   const [items, setItems] = useState([] as ItemType[]);
 
@@ -58,7 +61,7 @@ function Listings(): ReactElement {
         // console.log(response);
         setItems(listingItems(response));
       })
-      .catch((error) => {
+      .catch((error: string) => {
         console.log(error);
       });
   }, [filter]);

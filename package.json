@@ -20,7 +20,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "test": "jest --coverage",
+    "test": "jest --detectOpenHandles --coverage",
     "docs": "react-tsdoc ./src --output ./docs/doc.json"
   },
   "dependencies": {

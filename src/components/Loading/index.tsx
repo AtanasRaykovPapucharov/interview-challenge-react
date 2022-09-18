@@ -1,7 +1,7 @@
 /**
- * Loader
+ * Loading
  * 
- * @returns React Element Loader
+ * @returns React Element Loading
  * 
  */
 
