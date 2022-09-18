@@ -8,6 +8,7 @@
  */
 
 import React, { ReactElement, useState, useEffect } from "react";
+import { AxiosResponse } from "axios";
 
 import { URL } from "../../constants";
 import { randomStringGenerator } from "../../services/random";
@@ -26,7 +27,7 @@ const getUrl = (filter: string): string => {
 export const listingItems = (resp: ResponseType): ItemType[] => {
   const listItems: ItemType[] = [];
 
-  resp.data.forEach((dataItem:  ListingsDataType) => {
+  resp.data?.forEach((dataItem:  ListingsDataType) => {
     let imgId: string;
     let imgUrl: string = "";
 
@@ -57,9 +58,9 @@ function Listings({ getData }: any): ReactElement {
     const url = getUrl(filter);
 
     getData(url)
-      .then((response: ResponseType) => {
-        // console.log(response);
-        setItems(listingItems(response));
+      .then((response: AxiosResponse) => {
+        // console.log(response.data);
+        setItems(listingItems(response.data as ResponseType));
       })
       .catch((error: string) => {
         console.log(error);

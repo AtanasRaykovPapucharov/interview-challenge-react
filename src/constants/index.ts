@@ -4,3 +4,9 @@ export const MapColor = {
 };
 
 export const URL = "https://search.outdoorsy.com/rentals";
+
+export const HEADERS = {
+    "headers": {
+        "Accept": "application/json"
+    } 
+};

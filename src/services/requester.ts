@@ -1,23 +1,18 @@
 /**
  * Axios requester
  * 
+ * @param url : string input 
+ * 
  */
 
 import axios from "axios";
+import { HEADERS } from "../constants";
 
 axios.defaults.withCredentials = false;
 
 export const getData = async (url: string): Promise<object> => {
   try {
-    const { data, status } = await axios.get(
-      url, {
-        headers: {
-          Accept: "application/json",
-        }
-      }
-    );
-    // console.log("response status : ", status);
-    return data;
+    return await axios.get(url, HEADERS);
   } 
   catch (error) {
     if (axios.isAxiosError(error)) {

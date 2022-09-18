@@ -7,12 +7,13 @@
  * 
  */
 import React, { useEffect, useState } from "react";
+import { AxiosResponse } from "axios";
 
+import { randomStringGenerator } from "../../services/random";
+import ItemsMapper from "../ItemsMapper";
 import { MapDataType, IncludedItemType, ItemType, ResponseType, MapStateType } from "../types";
 import usa from "./usa-states.json";
 import { MapColor, URL } from "../../constants";
-import { randomStringGenerator } from "../../services/random";
-import ItemsMapper from "../ItemsMapper";
 
 import "./index.css";
 
@@ -25,7 +26,7 @@ const MapSearch = ({ getData }: any) => {
   const listingMapItems = (resp: ResponseType): ItemType[] => {
     const listItems: ItemType[] = [];
   
-    resp.data.forEach((dataItem:  MapDataType) => {
+    resp.data?.forEach((dataItem:  MapDataType) => {
       if(dataItem.attributes.location.state === state.id) {
         let imgId: string;
         let imgUrl: string = "";
@@ -52,8 +53,8 @@ const MapSearch = ({ getData }: any) => {
 
   useEffect(() => {
     getData(URL)
-      .then((response: ResponseType) => {
-        setItems(listingMapItems(response));
+      .then((response: AxiosResponse) => {
+        setItems(listingMapItems(response.data as ResponseType));
       })
       .catch((error: string) => {
         console.log(error);
