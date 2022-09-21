@@ -7,7 +7,8 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "inlineSourceMap": true,
+    "inlineSourceMap": false,
+    "sourceMap": true,
     "esModuleInterop": true
   },
   "include": ["src", "index.d.ts"] 

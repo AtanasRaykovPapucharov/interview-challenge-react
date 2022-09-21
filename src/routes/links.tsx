@@ -10,5 +10,10 @@ export const links: LinkType[] = [
         id: "map-link-unique-key",
         name: "Map",
         path: "/map"
+    },
+    {
+        id: "docs-link-unique-key",
+        name: "Docs",
+        path: "/docs"
     }
 ];

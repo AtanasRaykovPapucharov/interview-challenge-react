@@ -51,6 +51,16 @@ const MapSearch = ({ getData }: any) => {
     return listItems;
   }
 
+  const svgProps = {
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "477 421 593.3779761904764 318.2870370370371",
+    width: "600",
+    height: "320",
+    fill: "green",
+    stroke: "white",
+    strokeWidth: 1
+  }
+
   useEffect(() => {
     getData(URL)
       .then((response: AxiosResponse) => {
@@ -69,42 +79,22 @@ const MapSearch = ({ getData }: any) => {
       // console.log(state.id + " " + state.name)
   }
 
-  function onMouseEnterHandler(e: any) {
-    e.target.style.opacity = "0.5";
-  }
-
-  function onMouseLeaveHandler(e: any) {
-    e.target.style.opacity = "1";
-  }
-
   return (
     <main className="app-listings">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="477 421 593.3779761904764 318.2870370370371"
-        width="600"
-        height="320"
-        fill="green"
-        stroke="white"
-        strokeWidth={1}
-
-        >
+      <svg {...svgProps} onClick={ onClickHandler }>
         {
-            usa.states.map((s: MapStateType) => {
-              return <path 
-                  key={ s.id } 
-                  id={ s.id } 
-                  name={ s.name } 
-                  d={ s.d } 
-                  fill={ `US-${state.id}` !== s.id ? MapColor.PURPLE : MapColor.RED }
-                  
-                  onClick={ onClickHandler } 
-                  onMouseEnter={ onMouseEnterHandler } 
-                  onMouseLeave={ onMouseLeaveHandler } 
-              >
-                  <title>{s.name}</title>
-              </path>
-            })
+          usa.states.map((s: MapStateType) => {
+            const pathProps = {
+              className: "svg-region",
+              key: s.id ,
+              id: s.id ,
+              name: s.name ,
+              d: s.d ,
+              fill: `US-${s.id}` !== s.id ? MapColor.PURPLE : MapColor.RED
+            }
+
+            return <path {...pathProps}><title>{s.name}</title></path>
+          })
         }
       </svg>
       <h2 className="state-name">{state.name}</h2>

@@ -10,6 +10,11 @@
 import React, { ReactElement, useState, useEffect } from "react";
 import { AxiosResponse } from "axios";
 
+import { action } from "../../redux/action";
+import { ActionType } from "../../redux/action/type";
+import { useAppSelector } from "../../redux/hooks/useAppSelector";
+import { useAppDispatch } from "../../redux/hooks/useAppDispatch";
+
 import { URL } from "../../constants";
 import { randomStringGenerator } from "../../services/random";
 import { ListingsDataType, IncludedItemType, ItemType, ResponseType } from "../types";
@@ -51,7 +56,11 @@ export const listingItems = (resp: ResponseType): ItemType[] => {
 }
 
 function Listings({ getData }: any): ReactElement {
-  const [filter, setFilter] = useState("trailer")
+  // if use redux global state
+  // const dispatch = useAppDispatch();
+  // const initialFilter = useAppSelector(globalState => globalState.filter);
+
+  const [filter, setFilter] = useState("trailer");
   const [items, setItems] = useState([] as ItemType[]);
 
   useEffect(() => {

@@ -11,6 +11,13 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /.mdx?$/,
+        use: [
+          "babel-loader",
+          "@mdx-js/loader"
+        ]
+      },
+      {
         test: /\.(jpe?g|png|gif|webp|ico|svg)$/,
         loader: "url-loader"
       },

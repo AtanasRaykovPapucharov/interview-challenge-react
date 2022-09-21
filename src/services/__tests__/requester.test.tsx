@@ -11,14 +11,14 @@ jest.mock("axios");
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe("Tests requester sevice", () => {
+describe("Tests requester service", () => {
     describe("getData", () => {
         it("fetches successfully data from an API", async () => {
-            const data: any = { data: [] };
+            const response: any = { data: {} };
         
-            mockedAxios.get.mockImplementationOnce(() => Promise.resolve(data));
+            mockedAxios.get.mockImplementationOnce(() => Promise.resolve(response));
         
-            await expect(getData(URL)).resolves.toEqual(data);
+            await expect(getData(URL)).resolves.toEqual(response);
         
             expect(mockedAxios.get).toHaveBeenCalledWith(URL, HEADERS);
         });

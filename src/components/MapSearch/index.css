@@ -4,3 +4,8 @@
     font-size: 30px;
     font-weight: bolder;
 }
+
+.app-listings svg .svg-region:hover {
+    opacity: .5;
+}
+

@@ -18,7 +18,7 @@ import Loading from "./components/Loading";
 
 import "./index.css";
 
-const root: HTMLElement | null = document.getElementById("root");
+const htmlElement: HTMLElement | null = document.getElementById("root");
 
 const App: LazyExoticComponent<(props: {}) => JSX.Element> = lazy(() => import("./App"));
 const LazyApp: ReactNode = (() => <Suspense fallback={Loading()}>
@@ -27,6 +27,6 @@ const LazyApp: ReactNode = (() => <Suspense fallback={Loading()}>
   </StrictMode>
 </Suspense>)();
 
-root ? 
-  createRoot(root).render(LazyApp) : 
-  console.log("HTML element with id 'root' is missing");
+htmlElement ? 
+createRoot(htmlElement).render(LazyApp) : 
+console.log("HTML element with id 'root' is missing");

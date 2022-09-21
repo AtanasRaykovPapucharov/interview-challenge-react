@@ -1,4 +1,6 @@
 import React from "react";
+import { MDXProvider } from "@mdx-js/react";
+import Docs from "../docs/docs.mdx";
 
 import { getData } from "../services/requester";
 import { RouteType } from "./type";
@@ -19,5 +21,14 @@ export const routes: RouteType[] = [
         name: "MapSearch",
         path: "/map",
         view: () => <MapSearch getData={ getData } />
+    },
+    {
+        id: "docs-unique-key",
+        name: "Docs",
+        path: "/docs",
+        view: () => <MDXProvider >
+            <Docs />
+        </MDXProvider>
     }
 ];
+    
